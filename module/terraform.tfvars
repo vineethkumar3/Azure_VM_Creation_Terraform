@@ -1,0 +1,7 @@
+resource-group-name="vineeth-resource-group"
+resource-group-location="West Europe"
+virtual-network-name="Vineeth-virtual"
+subnet-name="vineeth-internal"
+ipadd="10.0.4.0/24"
+net-interface = "network-interface"
+machine-name = "vineeth-linux-machine"

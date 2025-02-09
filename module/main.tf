@@ -100,63 +100,13 @@ resource "azurerm_storage_account" "storage" {
     environment = "staging"
   }
 }
-/*
 terraform {
   backend "azurerm" {
-    resource_group_name  = "vineeth-resource-group"  # Can be passed via `-backend-config=`"resource_group_name=<resource group name>"` in the `init` command.
-    storage_account_name = "vineethstorage"                      # Can be passed via `-backend-config=`"storage_account_name=<storage account name>"` in the `init` command.
-    container_name       = "vineeth-container"                       # Can be passed via `-backend-config=`"container_name=<container name>"` in the `init` command.
-    key                  = "prod.terraform.tfstate"        # Can be passed via `-backend-config=`"key=<blob key name>"` in the `init` command.
+    resource_group_name  = "vineeth-resource-group"  
+    storage_account_name = "vineethstorage"                     
+    container_name       = "vineeth-container"                     
+    key                  = "prod.terraform.tfstate"       
     access_key = ""
   }
-}*/
-
-resource "azurerm_key_vault" "example" {
-  name                        = "vineethvalut2"
-  location                    = var.resource-group-location
-  resource_group_name         = var.resource-group-name
-  enabled_for_disk_encryption = true
-  tenant_id                   = ""
-  soft_delete_retention_days  = 7
-  purge_protection_enabled    = false
-
-  sku_name = "standard"
-
-  access_policy {
-    tenant_id = ""
-    object_id = ""
-
-    key_permissions = [
-      "Get",
-      "List"
-    ]
-
-    secret_permissions = [
-      "Get",
-      "List",
-      "Set"
-    ]
-
-    storage_permissions = [
-      "Get",
-    ]
-  }
-
-access_policy {
-  tenant_id = ""
-  object_id = ""
-
-      secret_permissions = [
-      "Get",
-      "List",
-      "Set"
-    ]
 }
 
-}
-
-resource "azurerm_key_vault_secret" "keyvalue" {
-  name         = "ipadd"
-  value        = azurerm_public_ip.public_ip.ip_address
-  key_vault_id = azurerm_key_vault.example.id
-}
